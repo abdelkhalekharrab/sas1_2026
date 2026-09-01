@@ -12,4 +12,3 @@ Moyenne = score_total / 4 ;
 console.log("Score total : " + score_total);
 
 console.log("Moyenne : " + Moyenne);
-
