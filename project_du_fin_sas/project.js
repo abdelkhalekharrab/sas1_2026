@@ -10,11 +10,16 @@ let n ;
 
 
 let Nom ;
-let id ;
+let id = 0 ;
+
 
 let availableSeat = 50 ; 
 
-const tickets = [{}];
+const tickets = [];
+
+let ticket ;
+
+
 
 
 
@@ -230,6 +235,16 @@ switch(n)
     break ;
     case 2 : achatTicket();
     break ; 
+    case 3 : Afficher_les_tickets();
+    break ;
+    case 4 : Annuler_un_ticket();
+    break ;
+    case 5 : Rechercher_un_ticket();
+    break ;
+    case 6 : Filtrer_les_trajets();
+    break ;
+    case 7 : Trier_les_trajets();
+    break ;
     case 0 : console.log("Quitter ...");
     break;
     default : console.log("sorry");
@@ -262,7 +277,7 @@ function achatTicket()
     {
 
         let nom = scan("votre nom : ");
-        let idtrajet = scan("votre id du trajet : ");
+        let idtrajet = +scan("votre id du trajet : ");
 
 
         for (let i = 0; i < trips.length; i++) 
@@ -271,33 +286,87 @@ function achatTicket()
                 {
                     if(trips[i].availableSeats > 0)
                 {
-                    let ticket =
+                    ticket =
                     {
-                        id : id ,
+                        id : ++id ,
                         passengerName: nom  ,
                         tripId: idtrajet    ,
                         seatNumber: id + 1  ,
                         price: trips[i].price ,
                     }
-                    
+                    console.log(ticket);
+                 
                 }
                 else
                 {
                     console.log("train complete");
+                    break ;
                 }
-
-                
-
-
-
                 
                 
-                    
-                
-
                 
             }
         }
+        
         console.log("Trajet introuvable.");
+    }
+
+
+tickets.push(ticket);
+
+
+
+
+
+function Afficher_les_tickets()
+{
+    for(let i = 0 ; i < tickets.length ; i++)
+    {
+        console.log("=== TICKETS ===");
+        console.log(ticket + "#" + tickets[i].id );
+        console.log("Passager :" + ticket.passengerName);
+        console.log("Trajet : :" + trips[i].departure + " → " + trips[i].destination);
+        console.log("place :" , ticket[i].seatNumber);
+        console.log("Prix :" + ticket[i].price);
 
     }
+
+}
+
+
+
+
+
+
+function Annuler_un_ticket()
+{
+    let idticket = Number (scan("enter l'identifiant du ticket :"));
+
+    for(let i = 0 ; i < tickets.length ; i++)
+    {
+        if(idticket == tickets[i].id)
+        {
+            idtrajet == idticket ;
+            tickets.splice(i , 1);
+            console.log("Ticket annulé avec succès")
+        }
+        else
+        {
+            console.log("Ticket introuvable.");
+        }
+    }
+
+}
+
+
+
+function Rechercher_un_ticket()
+{
+    for(let i = 0 ; i < tickets.length ; i++)
+    {
+        
+    }
+
+
+
+}
