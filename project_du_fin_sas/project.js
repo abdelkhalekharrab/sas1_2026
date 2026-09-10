@@ -5,6 +5,8 @@ let scan = require("prompt-sync")();
 
 
 
+
+
 let n ;
 
 
@@ -13,9 +15,12 @@ let Nom ;
 let id = 0 ;
 
 
+
 let availableSeat = 50 ; 
 
+
 const tickets = [];
+
 
 let ticket ;
 
@@ -212,6 +217,8 @@ const trips = [
 
 
 
+
+
 do
 {
     console.log("=================================");
@@ -227,7 +234,11 @@ do
     console.log("0. Quitter");
 
 
+
     n =  Number(scan("votre choix :"));
+
+
+
 
 switch(n)
 {
@@ -252,8 +263,12 @@ switch(n)
 }
 
     
+
 }
 while(n !== 0);
+
+
+
 
 
 
@@ -268,6 +283,9 @@ function afficherTrajets() {
             console.log("Places disponibles :" + trips[i].availableSeats);
         }
     }
+
+
+
 
 
 
@@ -318,6 +336,10 @@ tickets.push(ticket);
 
 
 
+
+
+
+
 function Afficher_les_tickets()
 {
     for(let i = 0 ; i < tickets.length ; i++)
@@ -332,6 +354,11 @@ function Afficher_les_tickets()
     }
 
 }
+
+
+
+
+
 
 
 
@@ -360,13 +387,91 @@ function Annuler_un_ticket()
 
 
 
+
+
+
+
+
+
 function Rechercher_un_ticket()
 {
+    let rechercher ;
     for(let i = 0 ; i < tickets.length ; i++)
     {
+        if(ticket == tickets[i].nom)
+        {
+        console.log(ticket + "#" + tickets[i].id );
+        console.log("Passager :" + ticket.passengerName);
+        console.log("Trajet : :" + trips[i].departure + " → " + trips[i].destination);
+        console.log("place :" , ticket[i].seatNumber);
+        console.log("Prix :" + ticket[i].price);
+        }
+
+        else
+        {
+            console.log("sorry");
+        }
+        
         
     }
 
 
 
 }
+
+
+
+
+
+
+
+
+
+function Filtrer_les_trajets()
+{
+    for(let i = 0 ; i < trips[i].departure.length ; i++)
+    {
+        console.log(trips[i].departure + " → " + trips[i].destination + trips[i].departure + "\n" + trips[i].price);
+    }
+
+
+}
+
+
+
+
+
+
+function Trier_les_trajets()
+{
+    for (let i = 0; i < trips.length; i++) {
+
+        
+        for (let j = 0; j < (trips[i].price - i - 1); j++) 
+        {
+
+           
+            if (trips[j] > trips[j + 1]) 
+            {
+
+                
+                let tmp = arr[j]
+                trips[j] = trips[j + 1]
+                trips[j + 1] = tmp
+            }
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
